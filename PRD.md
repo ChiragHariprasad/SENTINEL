@@ -4,7 +4,7 @@
 
 ### Security Evaluation & Networked Third-Party Intelligence Engine for Lifecycle Governance
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 **Product Type:** AI-Powered Third-Party Risk Management Platform (TPRM)
 **Prepared By:** Product Management Team
 **Status:** Draft
@@ -187,6 +187,7 @@ Responsibilities:
 * Risk scoring
 * Risk monitoring
 * Risk prediction
+* Anomaly detection
 
 ### Security Intelligence
 
@@ -248,6 +249,29 @@ Central repository containing all vendor information.
 * Certifications
 * Access Scope
 
+### Bulk Data Ingestion
+
+Phase 1 must support bulk ingestion and schema mapping for vendor datasets provided by enterprise stakeholders and evaluation datasets.
+
+Supported formats:
+
+* CSV
+* XLSX
+* JSON
+
+Mandatory Phase 1 support:
+
+* vendor_registry.csv
+* vendor_labels.csv
+
+Capabilities:
+
+* Schema validation
+* Field mapping
+* Duplicate detection
+* Import audit logs
+* Batch processing
+
 ---
 
 # Feature F-02
@@ -308,7 +332,7 @@ Structured contract metadata.
 
 ### Purpose
 
-Generate vendor risk score.
+Generate vendor risk scores and identify risk anomalies.
 
 ### Risk Categories
 
@@ -336,6 +360,20 @@ Generate vendor risk score.
 
 * Contract obligations
 
+### Anomaly Detection
+
+The platform shall evaluate vendors against predefined risk conditions and flag anomaly labels aligned with expected evaluation criteria.
+
+Supported anomaly types include:
+
+* BREACHED_VENDOR_HIGH_ACCESS
+* VENDOR_UNDER_INVESTIGATION
+* HIGH_RISK_SCORE
+* EXPIRED_CERTIFICATION
+* RECENTLY_BREACHED_VENDOR
+* CONTRACT_EXPIRED_ACTIVE_ACCESS
+* ELEVATED_RISK_VENDOR
+
 ### Output
 
 Risk Score:
@@ -347,6 +385,13 @@ Risk Tier:
 * Green
 * Yellow
 * Red
+
+Additional Outputs:
+
+* Anomaly Type
+* Severity
+* Risk Explanation
+* Recommended Action
 
 ---
 
@@ -631,9 +676,19 @@ So that decisions use current information.
 
 ---
 
+### US-008
+
+As a Vendor Risk Analyst,
+
+I want vendors evaluated against predefined anomaly labels such as BREACHED_VENDOR_HIGH_ACCESS and CONTRACT_EXPIRED_ACTIVE_ACCESS,
+
+So that critical third-party risks are identified and prioritized consistently.
+
+---
+
 # Epic 4: Monitoring
 
-### US-008
+### US-009
 
 As a Compliance Officer,
 
@@ -643,7 +698,7 @@ So that renewals are completed on time.
 
 ---
 
-### US-009
+### US-010
 
 As a Security Analyst,
 
@@ -655,7 +710,7 @@ So that response actions can begin immediately.
 
 # Epic 5: Reporting
 
-### US-010
+### US-011
 
 As an Auditor,
 
@@ -673,6 +728,8 @@ So that evidence collection is simplified.
 | Risk Assessment Accuracy     | 80%+        |
 | Contract Extraction Accuracy | 90%+        |
 | Compliance Tracking Accuracy | 95%+        |
+| Critical Vendor Recall       | >90%        |
+| High-Risk Vendor Recall      | >85%        |
 | Alert Lead Time              | 30 Days     |
 | Dashboard Load Time          | <3 Seconds  |
 | Audit Report Generation      | <15 Minutes |
@@ -689,6 +746,7 @@ So that evidence collection is simplified.
 * Vendor Registry
 * Contract Upload
 * Risk Scoring
+* Anomaly Detection
 * Certification Tracking
 * Dashboard
 * Alerts
@@ -701,6 +759,8 @@ So that evidence collection is simplified.
 * Knowledge Graph
 * RAG Search
 * Remediation Workflow
+* ITSM API Integrations (e.g., ServiceNow)
+* Procurement API Integrations (e.g., Coupa)
 
 ---
 
@@ -710,6 +770,8 @@ So that evidence collection is simplified.
 * Predictive Risk Forecasting
 * Threat Intelligence Integration
 * Financial Risk Monitoring
+* Advanced ITSM Integrations
+* Advanced Procurement Integrations
 
 ---
 
@@ -735,6 +797,15 @@ So that evidence collection is simplified.
 * GDPR compliant
 * SOC 2 aligned
 
+### Data Ingestion
+
+Phase 1 must support bulk ingestion, validation, and schema mapping for the provided datasets:
+
+* vendor_registry.csv
+* vendor_labels.csv
+
+The ingestion framework must support CSV-based imports and maintain compatibility with the provided schema definitions.
+
 ---
 
 # 13. Product Success Definition
@@ -747,3 +818,5 @@ The product will be considered successful when:
 * Audits can be completed significantly faster.
 * Security teams receive actionable vendor intelligence.
 * Executive leadership has real-time visibility into third-party risk posture.
+* Critical vendor anomalies are detected with high recall and accuracy.
+* Integration pathways exist for ITSM and procurement ecosystems.
