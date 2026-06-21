@@ -1,0 +1,77 @@
+{
+  "info": {
+    "name": "SENTINEL v2 API Tests",
+    "description": "Complete API contract test collection for SENTINEL v2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8082" },
+    { "key": "token", "value": "" }
+  ],
+  "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+  "item": [
+    { "name": "Auth", "item": [
+      { "name": "Login (valid)", "event": [{"listen":"test","script":{"exec":["pm.test('Status 200',()=>pm.response.to.have.status(200));","pm.test('Has token',()=>pm.response.json().data.access_token);","pm.collectionVariables.set('token',pm.response.json().data.access_token);"]}}],
+        "request": { "method": "POST", "url": "{{base_url}}/api/v1/auth/login", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"email\":\"admin@sentinel.ai\",\"password\":\"admin123\"}"} } },
+      { "name": "Login (wrong password)", "request": { "method": "POST", "url": "{{base_url}}/api/v1/auth/login", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"email\":\"admin@sentinel.ai\",\"password\":\"wrong\"}"} } },
+      { "name": "Login (invalid email)", "request": { "method": "POST", "url": "{{base_url}}/api/v1/auth/login", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"email\":\"x@y.com\",\"password\":\"x\"}"} } }
+    ]},
+    { "name": "Entities", "item": [
+      { "name": "List entities", "request": { "method": "GET", "url": "{{base_url}}/api/v2/entities" } },
+      { "name": "Create VENDOR", "request": { "method": "POST", "url": "{{base_url}}/api/v2/entities", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_type\":\"VENDOR\",\"entity_name\":\"Postman Test Vendor\"}"} } },
+      { "name": "Create SYSTEM", "request": { "method": "POST", "url": "{{base_url}}/api/v2/entities", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_type\":\"SYSTEM\",\"entity_name\":\"Postman Test System\"}"} } },
+      { "name": "Missing entity_type (422)", "request": { "method": "POST", "url": "{{base_url}}/api/v2/entities", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_name\":\"No Type\"}"} } },
+      { "name": "Missing entity_name (422)", "request": { "method": "POST", "url": "{{base_url}}/api/v2/entities", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_type\":\"VENDOR\"}"} } }
+    ]},
+    { "name": "Graph", "item": [
+      { "name": "Create relationship", "request": { "method": "POST", "url": "{{base_url}}/api/v2/graph/relationships", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"source_entity_id\":\"ENTITY_ID_1\",\"target_entity_id\":\"ENTITY_ID_2\",\"relationship_type\":\"HAS_ACCESS_TO\"}"} } },
+      { "name": "Get entity graph", "request": { "method": "GET", "url": "{{base_url}}/api/v2/graph/entity/ENTITY_ID" } },
+      { "name": "Impact path", "request": { "method": "GET", "url": "{{base_url}}/api/v2/graph/entity/ENTITY_ID/impact" } }
+    ]},
+    { "name": "Risk", "item": [
+      { "name": "Calculate risk", "request": { "method": "POST", "url": "{{base_url}}/api/v2/risk/calculate", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_id\":\"ENTITY_ID\"}"} } },
+      { "name": "Get risk score", "request": { "method": "GET", "url": "{{base_url}}/api/v2/risk/ENTITY_ID" } },
+      { "name": "Recalculate portfolio", "request": { "method": "POST", "url": "{{base_url}}/api/v2/risk/recalculate" } }
+    ]},
+    { "name": "Correlation", "item": [
+      { "name": "Run correlation", "request": { "method": "POST", "url": "{{base_url}}/api/v2/correlation/run", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_id\":\"ENTITY_ID\"}"} } },
+      { "name": "Get correlated risk", "request": { "method": "GET", "url": "{{base_url}}/api/v2/correlation/ENTITY_ID" } }
+    ]},
+    { "name": "Intelligence", "item": [
+      { "name": "Daily intelligence", "request": { "method": "GET", "url": "{{base_url}}/api/v2/intelligence/daily" } },
+      { "name": "Executive brief", "request": { "method": "GET", "url": "{{base_url}}/api/v2/intelligence/executive" } },
+      { "name": "Priorities", "request": { "method": "GET", "url": "{{base_url}}/api/v2/intelligence/priorities" } }
+    ]},
+    { "name": "Remediation", "item": [
+      { "name": "Generate remediation", "request": { "method": "POST", "url": "{{base_url}}/api/v2/remediation/generate", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_id\":\"ENTITY_ID\"}"} } },
+      { "name": "Open actions", "request": { "method": "GET", "url": "{{base_url}}/api/v2/remediation/actions/open" } }
+    ]},
+    { "name": "Timeline", "item": [
+      { "name": "Entity timeline", "request": { "method": "GET", "url": "{{base_url}}/api/v2/timeline/entity/ENTITY_ID" } },
+      { "name": "Portfolio timeline", "request": { "method": "GET", "url": "{{base_url}}/api/v2/timeline/portfolio" } }
+    ]},
+    { "name": "Scenarios", "item": [
+      { "name": "List scenario templates", "request": { "method": "GET", "url": "{{base_url}}/api/v2/scenario/templates" } },
+      { "name": "Run BREACH scenario", "request": { "method": "POST", "url": "{{base_url}}/api/v2/scenario/run", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_id\":\"ENTITY_ID\",\"scenario\":\"BREACH\"}"} } },
+      { "name": "Scenario results", "request": { "method": "GET", "url": "{{base_url}}/api/v2/scenario/results" } }
+    ]},
+    { "name": "Documents", "item": [
+      { "name": "Upload document", "request": { "method": "POST", "url": "{{base_url}}/api/v2/documents/upload", "header": [], "body": {"mode":"formdata","formdata":[{"key":"file","type":"file","src":"/tmp/test.pdf"}]} } },
+      { "name": "Analyze document", "request": { "method": "POST", "url": "{{base_url}}/api/v2/documents/analyze", "header": [{"key":"Content-Type","value":"application/x-www-form-urlencoded"}], "body": {"mode":"urlencoded","urlencoded":[{"key":"document_id","value":"DOC_ID"}]} } },
+      { "name": "Get findings", "request": { "method": "GET", "url": "{{base_url}}/api/v2/documents/findings?document_id=DOC_ID" } }
+    ]},
+    { "name": "Copilot", "item": [
+      { "name": "Ask copilot", "request": { "method": "POST", "url": "{{base_url}}/api/v2/copilot/query", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"question\":\"What should I focus on today?\"}"} } }
+    ]},
+    { "name": "Ingestion", "item": [
+      { "name": "JSON import", "request": { "method": "POST", "url": "{{base_url}}/api/v2/ingestion/json", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"data\":{\"entity_type\":\"VENDOR\",\"name\":\"Postman Import\"}}" } } },
+      { "name": "Manual entity", "request": { "method": "POST", "url": "{{base_url}}/api/v2/ingestion/manual", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_type\":\"POLICY\",\"entity_name\":\"Postman Policy\"}" } } }
+    ]},
+    { "name": "Pipeline", "item": [
+      { "name": "Run pipeline", "request": { "method": "POST", "url": "{{base_url}}/api/v2/pipeline/run" } }
+    ]},
+    { "name": "Blast Radius", "item": [
+      { "name": "Get blast radius", "request": { "method": "POST", "url": "{{base_url}}/api/v2/blast-radius", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\"entity_id\":\"ENTITY_ID\"}"} } }
+    ]}
+  ]
+}
