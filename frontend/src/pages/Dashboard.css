@@ -1,0 +1,129 @@
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.font-bold { font-weight: 700; }
+.font-medium { font-weight: 500; }
+.text-lg { font-size: 1.125rem; }
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.kpi-title {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.kpi-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-primary-light { background-color: rgba(59, 130, 246, 0.15); }
+.text-primary { color: var(--primary); }
+
+.bg-danger-light { background-color: rgba(239, 68, 68, 0.15); }
+.text-danger { color: var(--danger); }
+
+.bg-warning-light { background-color: rgba(245, 158, 11, 0.15); }
+.text-warning { color: var(--warning); }
+
+.bg-accent-light { background-color: rgba(139, 92, 246, 0.15); }
+.text-accent { color: var(--accent); }
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-trend {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.text-success { color: var(--success); }
+.rotate-180 { transform: rotate(180deg); }
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-container {
+  flex: 1;
+  min-height: 300px;
+  margin-top: 1rem;
+}
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.sentinel-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.sentinel-table th {
+  padding: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sentinel-table td {
+  padding: 1rem;
+  color: var(--text-main);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.875rem;
+  vertical-align: middle;
+}
+
+.sentinel-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sentinel-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
