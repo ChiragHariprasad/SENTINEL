@@ -9,6 +9,7 @@ from app.core.database import engine, Base, async_session_factory
 from app.models.user import User, Role
 from app.core.auth import hash_password
 from app.api.router import api_router
+from app.api.v2.router import v2_router
 from app.api.health import router as health_router
 
 
@@ -59,6 +60,7 @@ app.add_middleware(
 
 app.include_router(health_router)
 app.include_router(api_router)
+app.include_router(v2_router)
 
 
 @app.exception_handler(Exception)
