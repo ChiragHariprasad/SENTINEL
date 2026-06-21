@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     LLM_API_KEY: str = ""
     LLM_MODEL: str = "mistral-small-latest"
     LLM_BASE_URL: str = "https://api.mistral.ai/v1"
-    CORS_ORIGINS: list[str] = ["http://localhost:3000"]
+    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3002"]
 
     class Config:
         env_file = ".env"
