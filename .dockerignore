@@ -1,0 +1,8 @@
+**/node_modules
+**/.next
+**/__pycache__
+**/.pytest_cache
+**/.git
+**/.env
+**/*.pyc
+**/.DS_Store
