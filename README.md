@@ -8,7 +8,7 @@ Intelligence-driven third-party risk management platform. Ingests documents, bui
 
 - [Linux Run Instructions](RUN-LINUX.md)
 - [Windows Run Instructions](RUN-WINDOWS.md)
-- [Demo Results](DEMO_RESULTS.md)
+- [Validation Results](validation.md)
 - [Tests README](tests/README.md)
 
 ## What It Does
@@ -102,4 +102,5 @@ All stages exposed as v2 API endpoints plus a `POST /api/v2/pipeline/run` orches
 - **Pipeline:** 6/6 stages completed, 1,546 entities correlated per run
 - **Copilot:** routes 7 intent types with stop-word-filtered entity matching
 
-See [DEMO_RESULTS.md](DEMO_RESULTS.md) for the full 13-step pipeline breakdown.
+See [validation.md](validation.md) for the full 13-step pipeline breakdown.  
+Raw test outputs (JSON) are in [tests/results/](tests/results/).
