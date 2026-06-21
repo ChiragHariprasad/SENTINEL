@@ -1,0 +1,9 @@
+{
+  "level": "Level 3 - Graph Integrity",
+  "file": "tests/graph_tests/test_graph.py",
+  "passed": 15,
+  "failed": 0,
+  "total": 15,
+  "status": "PASS",
+  "output": "\u2550\u2550\u2550 LEVEL 3: GRAPH TESTING \u2550\u2550\u2550\n\n\u2500\u2500 3.1 Chain: Vendor \u2192 System \u2192 Control \u2192 Evidence \u2500\u2500\n  \u2705 Chain graph returns 200\n  \u2705 Chain has all 4 nodes\n  \u2705 Chain has all 3 edges\n  \u2705 Correlation traversal works\n  \u2705 Impact path returns 200/404\n\n\u2500\u2500 3.2 Cycles: A \u2192 B \u2192 C \u2192 A \u2500\u2500\n  \u2705 Cycle graph returns 200 (no infinite loop)\n  \u2705 Cycle has 3 nodes\n  \u2705 Cycle has 3 edges\n  \u2705 Correlation on cycle does not loop\n  \u2705 Blast radius on cycle returns 200\n\n\u2500\u2500 3.3 Scale: 100 entities, 500 relationships \u2500\u2500\n  \u2705 Created 500 relationships\n  \u2705 Scale graph loads successfully\n  \u2705 Scale graph has nodes\n  \u2705 Scale graph has edges\n  \u2705 Impact path handles scale gracefully\n\n\u2550\u2550\u2550 LEVEL 3 RESULTS: 15 passed, 0 failed \u2550\u2550\u2550\n"
+}

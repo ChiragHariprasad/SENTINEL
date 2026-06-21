@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-06-21",
+  "total_passed": 276,
+  "total_failed": 0,
+  "levels": {
+    "Level 1 - API Contract": {
+      "passed": 127,
+      "failed": 0,
+      "total": 127
+    },
+    "Level 2 - Business Logic": {
+      "passed": 12,
+      "failed": 0,
+      "total": 12
+    },
+    "Level 3 - Graph Integrity": {
+      "passed": 15,
+      "failed": 0,
+      "total": 15
+    },
+    "Level 9 - Chaos": {
+      "passed": 12,
+      "failed": 0,
+      "total": 12
+    },
+    "Level 10 - Demo Validation": {
+      "passed": 110,
+      "failed": 0,
+      "total": 110
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "level": "Level 2 - Business Logic",
+  "file": "tests/engine_tests/test_business_logic.py",
+  "passed": 12,
+  "failed": 0,
+  "total": 12,
+  "status": "PASS",
+  "output": "\u2550\u2550\u2550 LEVEL 2: BUSINESS LOGIC TESTING \u2550\u2550\u2550\n\n\u2500\u2500 Risk Engine \u2500\u2500\n  \u2705 Low-risk vendor scored\n  \u2705 Score is >= 0\n  \u2705 System scored\n  \u2705 System has score > 0\n\n\u2500\u2500 Correlation Engine \u2500\u2500\n  \u2705 Correlated risk has base_risk\n  \u2705 Correlated risk has neighbor_risk\n  \u2705 Correlated risk has correlated_risk\n  \u2705 Isolated entity has neighbor_risk=0\n\n\u2500\u2500 History & Timeline \u2500\u2500\n  \u2705 Entity timeline returns 200\n  \u2705 Portfolio timeline returns 200\n\n\u2500\u2500 Intelligence Pipeline \u2500\u2500\n  \u2705 Daily intelligence has summary\n  \u2705 Priorities returns 200\n\n\u2550\u2550\u2550 LEVEL 2 RESULTS: 12 passed, 0 failed \u2550\u2550\u2550\n"
+}

@@ -1,0 +1,9 @@
+{
+  "level": "Level 9 - Chaos",
+  "file": "tests/chaos_tests/test_chaos.py",
+  "passed": 12,
+  "failed": 0,
+  "total": 12,
+  "status": "PASS",
+  "output": "\u2550\u2550\u2550 LEVEL 9: CHAOS TESTING \u2550\u2550\u2550\n\n\u2500\u2500 9.0 Baseline (all services up) \u2500\u2500\n  \u2705 Baseline: entities list works\n  \u2705 Baseline: pipeline runs\n  \u2705 Baseline: intelligence works\n\n\u2500\u2500 9.1 Redis failure \u2500\u2500\n  \u2705 Entities available without Redis\n  \u2705 Pipeline runs without Redis\n\n\u2500\u2500 9.2 Database failure \u2500\u2500\n  \u2705 DB down returns proper error (not crash)\n\n\u2500\u2500 9.3 Bad CSV handling \u2500\u2500\n  \u2705 Bad CSV returns 200 or 422\n  \u2705 Invalid csv_type returns 422/400\n\n\u2500\u2500 9.4 Invalid payloads \u2500\u2500\n  \u2705 Empty scenario params don't crash\n  \u2705 Invalid UUID for risk doesn't crash\n  \u2705 Invalid entity type filter handled\n\n\u2500\u2500 9.5 Rapid concurrent requests \u2500\u2500\n  \u2705 20 concurrent GET /entities\n\n\u2550\u2550\u2550 LEVEL 9 RESULTS: 12 passed, 0 failed \u2550\u2550\u2550\n"
+}
